@@ -42,7 +42,7 @@ def inspect_raw_data(df):
 
     # Display first 5 rows
     print(f"\nFirst 5 rows:")
-    print(df.head(5).T)
+    print(df.head(5))
 
     # For numerical variables
     print(f"\nNumerical Statistics:")
@@ -200,7 +200,7 @@ def inspect_raw_data(df):
     plt.show()
 
 def clean_data(df):
-    print("Cleaning dataset...")
+    print("\nCleaning dataset...")
 
     df_clean = df.copy()
 
@@ -244,8 +244,8 @@ def clean_data(df):
     # Preview
     print(f"\nFinal dataset shape: {df_clean.shape[0]} rows × {df_clean.shape[1]} columns")
 
-    print("\nFirst 10 rows of cleaned dataset:")
-    print(df_clean.head(10))
+    print("\nFirst 5 rows of cleaned dataset:")
+    print(df_clean.head(5))
 
     print("\nColumn Summary:")
     df_clean.info(memory_usage=False)
@@ -263,7 +263,7 @@ def clean_data(df):
     return df_clean
 
 def preprocess_data(df):
-    print("Preprocessing dataset...")
+    print("\nPreprocessing dataset...")
 
     df = df.copy()
 
@@ -314,12 +314,12 @@ def preprocess_data(df):
     X_val[num_cols]   = scaler.transform(X_val[num_cols])
     X_test[num_cols]  = scaler.transform(X_test[num_cols])
 
-    print("\nDataset preprocessed & split successfully.")
+    print("\nDataset preprocessed & split successfully")
 
     return X_train, X_val, X_test, y_train, y_val, y_test
 
 def construct_model(input_dim):
-    print("Constructing ANN Model...")
+    print("\nConstructing ANN Model...")
 
     model = Sequential([
         # Input layer
@@ -366,7 +366,9 @@ def construct_model(input_dim):
     return model
 
 def train_model(model, X_train, y_train, X_val, y_val, epochs=50):
-    print("Training model...")
+    print("\nTraining model...")
+
+    ## Uncomment below code block & class weight argument in model.fit() to include class weights for better recalls for >50K
 
     # Calculate class weights
     # class_weights = compute_class_weight(
@@ -406,7 +408,7 @@ def train_model(model, X_train, y_train, X_val, y_val, epochs=50):
 
 def visualize_and_evaluate(model, history, X_test, y_test):
     # Generate predictions
-    print("Generating predictions...")
+    print("\nGenerating predictions...")
     y_pred_prob = model.predict(X_test)
     y_pred = (y_pred_prob > 0.5).astype(int)
 
@@ -493,7 +495,7 @@ def visualize_and_evaluate(model, history, X_test, y_test):
 #    MAIN
 # ==========
 df = load_data()
-# inspect_raw_data(df)
+inspect_raw_data(df)
 df_clean = clean_data(df)
 X_train, X_val, X_test, y_train, y_val, y_test = preprocess_data(df_clean)
 input_dim = X_train.shape[1]
