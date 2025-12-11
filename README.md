@@ -4,11 +4,13 @@ This repository contains the Python implementation code for CSC3034 Computationa
 
 The aim is to predict the outcome of whether an individual’s annual income will exceed $50,000 based on demographic and employment characteristics. The dataset used is the **Adult (Census Income)** dataset from the **UCI Machine Learning Repository** in this link: https://archive.ics.uci.edu/dataset/2/adult
 
-Install these dependencies before running the code: `pip install numpy pandas matplotlib seaborn scikit-learn tensorflow ucimlrepo`
+`ann.py` contains the Python implementation code. Install these dependencies before running the code: `pip install numpy pandas matplotlib seaborn scikit-learn tensorflow ucimlrepo`
+
+`ANN_CompIntelAssignment.ipynb` is the equivalent of the Python implementation code above in Google Colab. You can immediately run all blocks in Google Colab and every single block of code will run and provide the output in sequence.
 
 ## Output Format
 
-Below is how the output would look like when running the code
+Below is how the output would look like when running the Python code.
 
 ```
 Loading dataset via ucimlrepo...
